@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no,maximum-scale=1.0, user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>ToDo App</title>
+</head>
+<style>
+    body {
+        background-image: url('https://www.proofhub.com/wp-content/uploads/2019/01/to-do-list-apps.jpg');
+        background-size: cover;
+    }
+
+    .header {
+
+        text-align: center;
+        padding: 30px;
+        font-family: cursive;
+        background-color: rgba(0, 0, 0, 0.815);
+    }
+
+
+    .header h1 {
+        font-size: 3vw;
+        letter-spacing: 5px;
+        color: rgb(224, 200, 196);
+    }
+
+    .header p {
+        font-size: 2vw;
+        color: whitesmoke;
+    }
+
+    .navbar {
+        background-color: black;
+
+        padding: 10px;
+    }
+
+    .navbar .searchbox {
+        height: 40px;
+        transition: all 0.6s;
+        width: 70%;
+        border-radius: 90px;
+        padding: 20px;
+        font-size: 20px;
+        letter-spacing: 2px;
+        border: none;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .navbar .addBtn {
+        width: 29%;
+        height: 40px;
+        font-size: x-large;
+        border-radius: 90px;
+        background-color: rgba(0, 0, 0, 0.87);
+        color: white;
+        border: white solid 1px;
+        transition: all 0.2s;
+    }
+
+    .navbar .addBtn:hover {
+        background-color: rgb(13, 211, 13);
+    }
+
+    .navbar .searchbox:focus {
+
+        outline: none;
+        box-shadow: 0px 0px 30px rgb(231, 222, 222);
+    }
+
+    .navbar .addBtn:focus {
+        outline: none;
+    }
+
+    #myUL {
+        padding: 20px;
+        background-color: rgba(14, 11, 11, 0.794);
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+        list-style: none;
+        box-shadow: 0px 0px 20px black;
+
+    }
+
+    li {
+        padding: 15px;
+        text-decoration: none;
+        border-bottom: white solid 2px;
+        transition: 0.3s;
+
+
+
+    }
+
+    li:hover {
+        background-color: rgba(177, 173, 173, 0.678);
+        cursor: pointer;
+    }
+
+    .close {
+        color: rgb(246, 0, 0);
+        text-shadow: 0px 0px 20px red;
+        opacity: 1;
+        font-size: 40px;
+    }
+
+    li.checked {
+        transition: 0.3s;
+        background-color: rgba(128, 128, 128, 0.774);
+        text-decoration: line-through;
+    }
+
+    li.checked::before {
+        content: "";
+
+
+    }
+
+
+    @media only screen and (max-width: 700px) {
+        .header h1 {
+            font-size: 40px;
+        }
+
+        .header p {
+            font-size: 25px;
+
+        }
+
+        .navbar .addBtn {
+            font-size: medium;
+        }
+
+        .navbar .searchbox {
+            font-size: 15px;
+        }
+
+    }
+</style>
+
+<body style="height: 1500px;">
+    <div class="container-fluid header">
+        <h1 id="heading">Code Dhruv</h1>
+        <p id="title">To Do App</p>
+    </div>
+    <div class="container-fluid sticky-top navbar" id="myDIV">
+        <input type="text" class="searchbox" id="myInput" maxlength="50" placeholder="Enter Here..">
+
+        <button onclick="newElement()" class="addBtn" id="btn">Add to list</button>
+    </div>
+    <ul id="myUL" class="container">
+        <li>This is Just example</li>
+        <li class="checked">This is checked example</li>
+    </ul>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+<script>
+    var input = document.getElementById("myInput");
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("btn").click();
+        }
+    });
+
+    // Create a "close" button and append it to each list item
+    var myNodelist = document.getElementsByTagName("LI");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myNodelist[i].appendChild(span);
+    }
+
+    // Click on a close button to hide the current list item
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+    }
+
+    // Add a "checked" symbol when clicking on a list item
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function (ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
+
+    // Create a new list item when clicking on the "Add" button
+    function newElement() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("myInput").value;
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        if (inputValue === '') {
+            alert("You must write something!");
+        } else {
+            document.getElementById("myUL").appendChild(li);
+        }
+        document.getElementById("myInput").value = "";
+
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+    }
+
+</script>
+
+</html>
